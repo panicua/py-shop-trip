@@ -1,5 +1,6 @@
-from app.car import Car, FUEL_PRICE
 import json
+
+from app.car import Car
 
 
 class Customer:
@@ -16,7 +17,7 @@ class Customer:
         self.car = Car(**car)
 
 
-def load_customers_from_json(filepath):
+def load_customers_from_json(filepath: str) -> list[Customer]:
     with open(filepath, "r") as file:
         data = json.load(file)
         customers_data = data.get("customers")
@@ -24,6 +25,3 @@ def load_customers_from_json(filepath):
 
 
 customers_ = load_customers_from_json("app/config.json")
-
-# if __name__ == "__main__":
-#     load_customers_from_json("config.json")

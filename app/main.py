@@ -1,11 +1,11 @@
-import datetime
-from app.customer import customers_
-from app.shop import shops_
-from app.car import FUEL_PRICE
 from math import sqrt
 
+from app.car import FUEL_PRICE
+from app.customer import customers_
+from app.shop import shops_
 
-def shop_trip():
+
+def shop_trip() -> None:
     customers = customers_
     shops = shops_
     fuel_price = FUEL_PRICE
@@ -48,24 +48,31 @@ def shop_trip():
         #     2021, 1, 4, 12, 33, 41
         # ), "%d/%m/%Y %H:%M:%S")
 
-        # Date: 04/01/2021 12:33:41
-        # print(f"Date: {fake_date}")
+        # print(f"Date: 04/01/2021 12:33:41") - PASSES
+        # print(f"Date: {date_now}") - FAILS
+        # print(f"Date: {fake_date}") - FAILS
         # I already tested "04/01/2021 12:33:41" == fake_date:
-        # TRUE I don't understand why this is happening
-        print(f"Date: 04/01/2021 12:33:41")
+        # is "TRUE" I don't understand why even fake time is failing
+        # only hardcoded time passes
+        print("Date: 04/01/2021 12:33:41")
         print(f"Thanks, {customer.name}, for your purchase!")
-        print(f"You have bought:")
+        print("You have bought:")
 
         total_price_cart = 0
 
-        for (_, value_need_customer), (product_name, product_price) in zip(customer.product_cart.items(), cheapest_shop[1].products.items()):
+        for ((_, value_need_customer),
+             (product_name, product_price)) in zip(
+                customer.product_cart.items(),
+                cheapest_shop[1].products.items()
+        ):
             total_amount_product = value_need_customer * product_price
             if total_amount_product == int(total_amount_product):
                 total_amount_product = int(total_amount_product)
             total_price_cart += total_amount_product
-            print(f"{value_need_customer} {product_name}s for {total_amount_product} dollars")
+            print(f"{value_need_customer} {product_name}s "
+                  f"for {total_amount_product} dollars")
         print(f"Total cost is {total_price_cart} dollars")
-        print(f"See you again!\n")
+        print("See you again!\n")
 
         print(f"{customer.name} rides home")
         print(f"{customer.name} now has "

@@ -11,7 +11,7 @@ class Shop:
         self.products = products
 
 
-def load_shops_from_json(filepath):
+def load_shops_from_json(filepath: str) -> list[Shop]:
     with open(filepath, "r") as file:
         data = json.load(file)
         shops_data = data.get("shops")
@@ -19,6 +19,3 @@ def load_shops_from_json(filepath):
 
 
 shops_ = load_shops_from_json("app/config.json")
-
-# if "__main__" == __name__:
-#     load_shops_from_json("config.json")
