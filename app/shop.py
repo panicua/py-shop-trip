@@ -1,8 +1,8 @@
+from dataclasses import dataclass
+
+
+@dataclass
 class Shop:
-    def __init__(self,
-                 name: str,
-                 location: list,
-                 products: dict) -> None:
-        self.name = name
-        self.location = location
-        self.products = products
+    name: str = None
+    location: list[int] = None
+    products: dict[str:float] = None
